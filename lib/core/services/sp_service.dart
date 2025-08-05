@@ -6,8 +6,8 @@ class SpService {
     prefs.setString("x-auth-token", token);
   }
 
-  Future<void> getToken() async {
+  Future<String?> getToken() async {
     final prefs = await SharedPreferences.getInstance();
-    prefs.getString('x-auth-token');
+    return prefs.getString('x-auth-token');
   }
 }
