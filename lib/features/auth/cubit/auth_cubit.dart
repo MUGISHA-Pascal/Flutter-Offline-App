@@ -35,7 +35,7 @@ class AuthCubit extends Cubit<AuthState> {
   }) async {
     try {
       emit(AuthLoading());
-      await authRemoteRepository.signUp(
+      await authRemoteRepository.signup(
         name: name,
         email: email,
         password: password,

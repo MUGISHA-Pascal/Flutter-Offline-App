@@ -48,7 +48,7 @@ class AuthRemoteRepository {
     }
   }
 
-  Future<UserModel?> getUserModel() async {
+  Future<UserModel?> getUserData() async {
     try {
       final token = await spService.getToken();
       if (token == null) {
