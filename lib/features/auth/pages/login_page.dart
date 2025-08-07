@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_offline_app/features/auth/cubit/auth_cubit.dart';
 import 'package:flutter_offline_app/features/auth/pages/signup_page.dart';
+import 'package:flutter_offline_app/features/home/pages/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   static MaterialPageRoute route() =>
