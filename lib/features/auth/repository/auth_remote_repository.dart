@@ -25,6 +25,10 @@ class AuthRemoteRepository {
       }
       return UserModel.fromJson(res.body);
     } catch (e) {
+      // Provide better error messages for network issues
+      if (e.toString().contains('SocketException') || e.toString().contains('Connection refused')) {
+        throw 'No internet connection. Please check your network and try again.';
+      }
       throw e.toString();
     }
   }
@@ -70,9 +74,14 @@ class AuthRemoteRepository {
       }
       return UserModel.fromJson(userResponse.body);
     } catch (e) {
+      // If network request fails, try to get user from local storage
       final user = await authLocalRepository.getUser();
-      print(user);
-      throw e.toString();
+      if (user != null) {
+        print("Using cached user data (offline mode)");
+        return user;
+      }
+      print("No cached user found and network error: $e");
+      return null; // Return null instead of throwing error
     }
   }
 }
